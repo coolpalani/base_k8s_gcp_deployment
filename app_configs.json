@@ -1,0 +1,28 @@
+{
+  "applications": [
+    {
+      "name": "demo_data_app",
+      "k8s_deployment": "k8s_deployments/ats_data_app_deployment.yaml",
+      "base_env_vars": [
+        "${SECRET_1}",
+        "${SECRET_2}"
+        ],
+      "runtime_vars": [
+        "-s ${demo_data_app_start_time}",
+        "-f ${demo_data_app_end_time}"
+        ]
+    },
+
+    {
+      "name": "redis",
+      "k8s_deployment": "k8s_deployments/redis_deployment.yaml",
+      "base_env_vars": [],
+      "runtime_vars": []
+    }
+  ],
+  "project": "Demo",
+  "metadata": {
+    "release-date": "2018-04-15",
+    "configuration": "demo"
+  }
+}
