@@ -1,0 +1,42 @@
+# /k8s_deployments/demo_data_app_deployment.yaml
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo-app
+  labels:
+    app: app-data-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-data-app
+    spec:
+      containers:
+      - name: demo-data-app
+        image: gcr.io/ats-beta-01-179603/dj1-app1
+        imagePullPolicy: Always
+        env:
+          - name: SECRET_1
+            valueFrom:
+              secretKeyRef:
+                name: secret1
+                key: SECRET_1
+          - name: SECRET_2
+            valueFrom:
+              secretKeyRef:
+                name: secret2
+                key: SECRET_2
+            # NOTE: starting and ending times need to be in NY time
+          - name: starting_time
+            value: "2018-02-22T21:35:00"
+          - name: ending_time
+            value: "2018-02-22T21:35:30"
+      volumes:
+        - name: sv-1
+          secret:
+            secretName: secret1
+        - name: sv-2
+          secret:
+            secretName: secret2

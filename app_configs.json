@@ -1,8 +1,8 @@
 {
   "applications": [
     {
-      "name": "demo_data_app",
-      "k8s_deployment": "k8s_deployments/ats_data_app_deployment.yaml",
+      "name": "demo_app",
+      "k8s_deployment": "k8s_deployments/demo_app_deployment.yaml",
       "base_env_vars": [
         "${SECRET_1}",
         "${SECRET_2}"

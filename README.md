@@ -21,12 +21,13 @@ __Usage:__
 
 | Application                 | Pods |  Seq  |
 | --------------------------- |:----:| -----:|
-| [demo_data_app](https://github.com/wave-ami/demo_data_app)                |  1  |  3rd  |
-| redis                       |  3   |  1st  |
+| [demo_data_app](https://github.com/wave-ami/django1_k8s_gcp)                |  1  |  3rd  |
+| k8s cluster                 |  3   |  1st  |
+| redis                       |  3   |  2nd  |
 
 
 
 In Sequence:
-0. base k8s cluster deployment
-1. redis deployment
-2. data app node frontend data construct deployment
+1. base k8s cluster deployment
+2. redis deployment
+3. data app node frontend data construct deployment

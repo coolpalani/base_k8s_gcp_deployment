@@ -17,7 +17,3 @@ gcloud container clusters create --num-nodes=$NUM_NODES $CLUSTER_NAME_IS_DATE
 # Create/Map secrets on cluster
 kubectl create secret generic secret1 --from-literal=SECRET_1=$SECRET_1
 kubectl create secret generic secret2 --from-literal=SECRET_2=$SECRET_2
-
-# kubectl exec redis-master-ft9ex env
-# kubectl get jobs
-# kubectl describe jobs/countdown

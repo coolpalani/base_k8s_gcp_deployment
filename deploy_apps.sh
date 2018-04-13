@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-nodenames=("redis" "demo_data_app")
+#nodenames=("redis" "demo_app")
+nodenames=("demo_app")
 
 # Load secrets
 secrets_array=()
 for i in ${nodenames[@]}; do
-        echo $i
+        echo "Extracting $i app configuration..."
         varsarr=$(cat app_configs.json | jq --arg v "$i" '.applications[] | select(.name == $v)' | jq '.base_env_vars[]')
         if [[ ${varsarr} ]]; then
             for var in ${varsarr}; do
@@ -14,24 +15,15 @@ for i in ${nodenames[@]}; do
         fi
 done
 
-# TODO -- within apps_config.json map deployment k8s secret to a k-v to parse through and launch k8s secrets per app
-echo ${secrets_array[0]} ${secrets_array[1]}
-for i in ${secrets_array[@]}; do
-    echo "Secret loop:"
-    echo $i
-done
-
 # Deployments
 for i in ${nodenames[@]}; do
-        echo $i
+        # Extract deployment path from app configuration, prepend current directory path
         rawdeploypath=$(cat app_configs.json | jq --arg v "$i" '.applications[] | select(.name == $v)' | jq '.k8s_deployment')
         deploymentpath=$(sed -e 's/^"//' -e 's/"$//' <<<"$rawdeploypath")
         CURRDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
         deployment=$CURRDIR/$deploymentpath
-        echo $deployment
-        #kubectl create -f $deployment
-done
 
-# jq REF:
-# http://www.tothenew.com/blog/how-to-parse-json-by-command-line-in-linux/
-# https://stedolan.github.io/jq/manual/#Basicfilters
+        # Deploy app into k8s cluster
+        echo -e "\nDeploying $i to k8s from ...$deployment"
+        kubectl create -f $deployment
+done
