@@ -4,15 +4,14 @@
       "name": "demo_app",
       "k8s_deployment": "k8s_deployments/demo_app_deployment.yaml",
       "base_env_vars": [
-        "${SECRET_1}",
-        "${SECRET_2}"
+        "${PRACTICE_ACCESS_TOKEN}",
+        "${PRACTICE_ACCOUNT_ID}"
         ],
       "runtime_vars": [
         "-s ${demo_data_app_start_time}",
         "-f ${demo_data_app_end_time}"
         ]
     },
-
     {
       "name": "redis",
       "k8s_deployment": "k8s_deployments/redis_deployment.yaml",
