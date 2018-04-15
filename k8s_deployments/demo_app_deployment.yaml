@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: demo-app
   labels:
-    app: app-data-app
+    app: demo-data-app
 spec:
   replicas: 1
   template:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: demo-data-app
-        image: gcr.io/ats-beta-01-179603/sat14-data-app
+        image: gcr.io/ats-beta-01-179603/demo-data-app
         imagePullPolicy: Always
         env:
           - name: ATS_ACCESS_TOKEN
@@ -41,4 +41,4 @@ spec:
           secret:
             secretName: account-id-env
 
-# $ python main.py -s "2018-04-14T17:00:00" -f "2018-04-14T17:01:00"
+# $ python main.py -s "2018-04-15T12:10:30" -f "2018-04-15T12:12:00"
