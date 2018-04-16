@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#nodenames=("redis" "demo_app")
-nodenames=("demo_app")
+nodenames=("redis" "demo_app")
+#nodenames=("demo_app")
 
 # Load secrets
 secrets_array=()

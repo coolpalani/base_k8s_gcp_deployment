@@ -24,7 +24,7 @@ redis_conn = redis.StrictRedis(connection_pool=redis_client_pool)
 
 # Read pd.DataFrame() from redis list
 # Set the filtering on the dataframe columns for demonstration purposes
-# From the redis node, extract a key name and substitute for None below:
+# (From ssh-ing into the redis node, extract a key name and substitute for None below)
 key_name = None
 column_filtering = []
 nested_df = redis_conn.lrange(key_name, 0, 0)
@@ -34,7 +34,7 @@ df = unnested_df[column_filtering]
 # Inspect DataFrame
 print("\n\nShape of DataFrame: {} \n\t"
       "Columns of DataFrame:  {} \n\t"
-      "First 3 values of DataFrame:  \n{}\n\n"
-      .format(df.shape, df.columns.tolist(), df[:3]))
+      "First 10 values of DataFrame:  \n{}\n\n"
+      .format(df.shape, df.columns.tolist(), df[:10]))
 
 # END OF DEMO

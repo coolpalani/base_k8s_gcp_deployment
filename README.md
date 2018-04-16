@@ -27,7 +27,8 @@ __Usage:__
 
 
 
-In Sequence:
+In Sequence (change ENV VAR specifications to actuals):
 1. base k8s cluster deployment
 2. redis deployment
 3. data app node frontend data construct deployment
+

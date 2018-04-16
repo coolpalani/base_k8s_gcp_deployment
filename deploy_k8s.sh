@@ -15,5 +15,5 @@ fi
 gcloud container clusters create --num-nodes=$NUM_NODES $CLUSTER_NAME_IS_DATE
 
 # Create/Map secrets on cluster
-kubectl create secret generic access-token-env --from-literal=ATS_ACCESS_TOKEN=$ATS_ACCESS_TOKEN
-kubectl create secret generic account-id-env --from-literal=ATS_ACCOUNT_ID=$ATS_ACCOUNT_ID
+kubectl create secret generic access-token-env --from-literal=ACCESS_TOKEN=ACCESS_TOKEN
+kubectl create secret generic account-id-env --from-literal=ACCOUNT_ID=ACCOUNT_ID

@@ -1,23 +1,26 @@
 {
   "applications": [
+
     {
       "name": "demo_app",
       "k8s_deployment": "k8s_deployments/demo_app_deployment.yaml",
       "base_env_vars": [
-        "${PRACTICE_ACCESS_TOKEN}",
-        "${PRACTICE_ACCOUNT_ID}"
+        "${ACCESS_TOKEN}",
+        "${ACCOUNT_ID}"
         ],
       "runtime_vars": [
-        "-s ${demo_data_app_start_time}",
-        "-f ${demo_data_app_end_time}"
+        "-s ${demo_app_start_time}",
+        "-f ${demo_app_end_time}"
         ]
     },
+
     {
       "name": "redis",
       "k8s_deployment": "k8s_deployments/redis_deployment.yaml",
       "base_env_vars": [],
       "runtime_vars": []
     }
+
   ],
   "project": "Demo",
   "metadata": {
